@@ -1,0 +1,29 @@
+<div class="dice-sides-grid">
+	<counter-grid-row vg-for='i := 0; i < data.NumSides; i=i+4' :side-roll-counters='data.Counters[i:i+4]'></counter-grid-row>
+</div>
+
+<style>
+	.dice-sides-grid {
+		background: #eee;
+	}
+</style>
+
+<script type="application/x-go">
+	type DiceSidesGridData struct {
+		NumSides int `default:"20"`
+		NumRows int
+		Counters []SideRollCounterData
+	}
+
+	func (comp *DiceSidesGrid) NewData(props vugu.Props) (interface{}, error) {
+		numSides := props["sides"].(int)
+		numRows :=  props["rows"].(int)
+
+		ret := &DiceSidesGridData{
+			NumSides: numSides,
+			NumRows: numRows,
+			Counters: state.SideRollCounters,
+		}
+		return ret, nil
+	}
+</script>

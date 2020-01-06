@@ -9,13 +9,14 @@ import (
 	"github.com/vugu/vugu"
 )
 
-
 func main() {
 
 	println("Entering main()")
 	defer println("Exiting main()")
 
-	rootInst, err := vugu.New(&RollCount{}, nil)
+	initState()
+	state.initGrid(20)
+	rootInst, err := vugu.New(&Root{}, nil)
 	if err != nil {
 		log.Fatal(err)
 	}

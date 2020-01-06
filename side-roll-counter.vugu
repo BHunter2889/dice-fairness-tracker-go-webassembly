@@ -1,0 +1,11 @@
+<div class="side-roll-counter">
+	<button @click="data.Increment()" vg-html='data.SideNumber'></button>
+	<div vg-html='data.Count'></div>
+</div>
+
+<style>
+	.side-roll-counter {
+		background: #eee;
+		flex-grow: 1;
+	}
+</style>

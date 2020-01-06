@@ -6,28 +6,19 @@ import "fmt"
 import "reflect"
 import "github.com/vugu/vugu"
 
-type RollCountData struct {
-	SideNumber int
-	Count      int `default:"0"`
-}
+var _ vugu.ComponentType = (*SideRollCounter)(nil)
 
-func (data *RollCountData) Increment() {
-	data.Count++
-}
-
-var _ vugu.ComponentType = (*RollCount)(nil)
-
-func (comp *RollCount) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css *vugu.VGNode, reterr error) {
-	data := dataI.(*RollCountData)
+func (comp *SideRollCounter) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css *vugu.VGNode, reterr error) {
+	data := dataI.(*SideRollCounterData)
 	_ = data
 	_ = fmt.Sprint
 	_ = reflect.Value{}
 	event := vugu.DOMEventStub
 	_ = event
 	css = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "style", DataAtom: vugu.VGAtom(458501), Namespace: "", Attr: []vugu.VGAttribute(nil)}
-	css.AppendChild(&vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t.dice-side-number-tracker {\n\t\tbackground: #eee;\n\t}\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)})
+	css.AppendChild(&vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t.side-roll-counter {\n\t\tbackground: #eee;\n\t\tflex-grow: 1;\n\t}\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)})
 	var n *vugu.VGNode
-	n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "dice-side-number-tracker"}}}
+	n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "side-roll-counter"}}}
 	vdom = n
 	{
 		parent := n
@@ -35,6 +26,7 @@ func (comp *RollCount) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css *vug
 		parent.AppendChild(n)
 		n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "button", DataAtom: vugu.VGAtom(102662), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 		parent.AppendChild(n)
+		n.InnerHTML = fmt.Sprint(data.SideNumber)
 		// @click = { data.Increment() }
 		{
 			var i_ interface{} = data
@@ -51,11 +43,6 @@ func (comp *RollCount) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css *vug
 			// force compiler to check arguments for type safety
 			data.Increment()
 		}
-		{
-			parent := n
-			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "Nat20", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
-			parent.AppendChild(n)
-		}
 		n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 		parent.AppendChild(n)
 		n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute(nil)}
@@ -67,8 +54,6 @@ func (comp *RollCount) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css *vug
 	return
 }
 
-type RollCount struct {}
+type SideRollCounter struct {}
 
-func (ct *RollCount) NewData(props vugu.Props) (interface{}, error) { return &RollCountData{}, nil }
-
-func init() { vugu.RegisterComponentType("roll-count", &RollCount{}) }
+func init() { vugu.RegisterComponentType("side-roll-counter", &SideRollCounter{}) }
