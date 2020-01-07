@@ -16,7 +16,7 @@ func (comp *SideRollCounter) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, cs
 	event := vugu.DOMEventStub
 	_ = event
 	css = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "style", DataAtom: vugu.VGAtom(458501), Namespace: "", Attr: []vugu.VGAttribute(nil)}
-	css.AppendChild(&vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t.side-roll-counter {\n\t\tbackground: #eee;\n\t\tflex-grow: 1;\n\t}\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)})
+	css.AppendChild(&vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t.side-roll-counter:hover {\n\t\tbox-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n\t}\n\n\t.side-roll-counter {\n\t\tbox-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n\t\ttransition: 0.3s;\n\t\twidth: auto;\n\t\tflex-grow: 1;\n\t}\n\n\t.container {\n\t\tpadding: 2px 16px;\n\t\tdisplay: inline-block;\n\t\theight: 100px;\n\t}\n\n\t.count-decrement {\n\t\tdisplay: block;\n\t\tbackground-image: url(\"assets/icons/minus24.ico\");\n\t\twidth: 20px;\n\t\theight: 20px;\n\t\tfloat: left;\n\t\tmargin: 0 6px 0 0;\n\t}\n\n\t.count-increment {\n\t\tdisplay: block;\n\t\tbackground-image: url(\"assets/icons/add24.ico\");\n\t\twidth: 20px;\n\t\theight: 20px;\n\t\tfloat: right;\n\t\tmargin: 0 0 0 6px;\n\t}\n\n\t.pressed {\n\t\tbackground: #333 url(//stephy.mccdgm.net/images/patterns/gray_sand.png);\n\t\ttext-align: center;\n\t\tfont-size: x-large;\n\t}\n\n\t.pressed span {\n\t\tcolor: #222;\n\t\tfont-family: 'Oswald', sans-serif;\n\t\tposition: center;\n\t\tz-index: 0;\n\t}\n\n\t.pressed span:before, .pressed span:after {\n\t\tposition: absolute;\n\t\tleft: 0;\n\t\tcolor: #222; // Fallback for non-webkit\n\t}\n\n\t.pressed span:before {\n\t\tz-index: 1;\n\t\tbackground: -webkit-linear-gradient(transparent, transparent),\n\t\turl(//stephy.mccdgm.net/images/patterns/dark_wall.png);\n\t\tbackground: -o-linear-gradient(transparent, transparent);\n\t\t-webkit-background-clip: text;\n\t\t-webkit-text-fill-color: transparent;\n\t}\n\n\t.pressed span:after {\n\t\ttext-shadow: 0px 1px 2px rgba(255,255,255,0.2);\n\t\tz-index: -1;\n\t}\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)})
 	var n *vugu.VGNode
 	n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "side-roll-counter"}}}
 	vdom = n
@@ -24,31 +24,75 @@ func (comp *SideRollCounter) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, cs
 		parent := n
 		n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 		parent.AppendChild(n)
-		n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "button", DataAtom: vugu.VGAtom(102662), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+		n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "pressed"}}}
 		parent.AppendChild(n)
-		n.InnerHTML = fmt.Sprint(data.SideNumber)
-		// @click = { data.Increment() }
 		{
-			var i_ interface{} = data
-			idat_ := reflect.ValueOf(&i_).Elem().InterfaceData()
-			var i2_ interface{} = data.Increment
-			i2dat_ := reflect.ValueOf(&i2_).Elem().InterfaceData()
-			n.SetDOMEventHandler("click", vugu.DOMEventHandler{
-				ReceiverAndMethodHash: uint64(idat_[0]) ^ uint64(idat_[1]) ^ uint64(i2dat_[0]) ^ uint64(i2dat_[1]),
-				Method:                reflect.ValueOf(data).MethodByName("Increment"),
-				Args:                  []interface{}{},
-			})
-		}
-		if false {
-			// force compiler to check arguments for type safety
-			data.Increment()
+			parent := n
+			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+			parent.AppendChild(n)
+			n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "span", DataAtom: vugu.VGAtom(40708), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+			parent.AppendChild(n)
+			n.InnerHTML = fmt.Sprint(data.SideNumber)
+			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+			parent.AppendChild(n)
 		}
 		n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 		parent.AppendChild(n)
-		n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+		n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "container"}}}
 		parent.AppendChild(n)
-		n.InnerHTML = fmt.Sprint(data.Count)
-		n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+		{
+			parent := n
+			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+			parent.AppendChild(n)
+			n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "button", DataAtom: vugu.VGAtom(102662), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "count-decrement"}}}
+			parent.AppendChild(n)
+			// @click = { data.Decrement() }
+			{
+				var i_ interface{} = data
+				idat_ := reflect.ValueOf(&i_).Elem().InterfaceData()
+				var i2_ interface{} = data.Decrement
+				i2dat_ := reflect.ValueOf(&i2_).Elem().InterfaceData()
+				n.SetDOMEventHandler("click", vugu.DOMEventHandler{
+					ReceiverAndMethodHash: uint64(idat_[0]) ^ uint64(idat_[1]) ^ uint64(i2dat_[0]) ^ uint64(i2dat_[1]),
+					Method:                reflect.ValueOf(data).MethodByName("Decrement"),
+					Args:                  []interface{}{},
+				})
+			}
+			if false {
+				// force compiler to check arguments for type safety
+				data.Decrement()
+			}
+			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+			parent.AppendChild(n)
+			n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "input", DataAtom: vugu.VGAtom(281349), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "count-input"}, vugu.VGAttribute{Namespace: "", Key: "type", Val: "text"}}}
+			parent.AppendChild(n)
+			n.Props = vugu.Props{
+				"value": data.Count,
+			}
+			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+			parent.AppendChild(n)
+			n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "button", DataAtom: vugu.VGAtom(102662), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "count-increment"}}}
+			parent.AppendChild(n)
+			// @click = { data.Increment() }
+			{
+				var i_ interface{} = data
+				idat_ := reflect.ValueOf(&i_).Elem().InterfaceData()
+				var i2_ interface{} = data.Increment
+				i2dat_ := reflect.ValueOf(&i2_).Elem().InterfaceData()
+				n.SetDOMEventHandler("click", vugu.DOMEventHandler{
+					ReceiverAndMethodHash: uint64(idat_[0]) ^ uint64(idat_[1]) ^ uint64(i2dat_[0]) ^ uint64(i2dat_[1]),
+					Method:                reflect.ValueOf(data).MethodByName("Increment"),
+					Args:                  []interface{}{},
+				})
+			}
+			if false {
+				// force compiler to check arguments for type safety
+				data.Increment()
+			}
+			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+			parent.AppendChild(n)
+		}
+		n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 		parent.AppendChild(n)
 	}
 	return

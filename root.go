@@ -18,7 +18,7 @@ func (comp *Root) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css *vugu.VGN
 	event := vugu.DOMEventStub
 	_ = event
 	css = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "style", DataAtom: vugu.VGAtom(458501), Namespace: "", Attr: []vugu.VGAttribute(nil)}
-	css.AppendChild(&vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t.root {\n\t\tbackground: #eee;\n\t}\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)})
+	css.AppendChild(&vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t.root {\n\t\tbackground: rgb(32,56,42);\n\t\tbackground: radial-gradient(circle, rgba(32,56,42,0.9360119047619048) 1%, rgba(33,31,31,1) 100%);\n\t}\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)})
 	var n *vugu.VGNode
 	n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "root"}}}
 	vdom = n

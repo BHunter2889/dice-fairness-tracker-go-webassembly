@@ -4,7 +4,6 @@
 
 <style>
 	.counter-grid-row {
-		background: #eee;
 		width: 90%;
 		display: inline-flex;
 		justify-content: space-evenly;

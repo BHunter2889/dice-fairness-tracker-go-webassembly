@@ -4,7 +4,9 @@
 
 <style>
 	.dice-sides-grid {
-		background: #eee;
+		width: 100%;
+		max-height: available;
+		min-height: available;
 	}
 </style>
 
