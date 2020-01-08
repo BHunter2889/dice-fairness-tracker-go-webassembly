@@ -1,11 +1,12 @@
 <div class="root">
 	<dice-sides-grid :sides='state.NumSides' :rows='state.NumRows'></dice-sides-grid>
+	<span class="container" vg-html='state.TotalRollCount'></span>
 </div>
 
 <style>
 	.root {
-		background: rgb(32,56,42);
-		background: radial-gradient(circle, rgba(32,56,42,0.9360119047619048) 1%, rgba(33,31,31,1) 100%);
+		background: rgba(32,56,42,0.6);
+		background: radial-gradient(circle, rgba(32,56,42,0.4) 1%, rgba(33,31,31,0.5) 100%);
 	}
 </style>
 

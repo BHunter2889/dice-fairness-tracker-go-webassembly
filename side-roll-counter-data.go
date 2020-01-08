@@ -7,6 +7,7 @@ type SideRollCounterData struct {
 	RowIndex int
 	IndexOfRow int
 	Count int `default:"0"`
+	StyleContentString string
 }
 
 func (comp *SideRollCounter) NewData(props vugu.Props) (interface{}, error) {
@@ -17,8 +18,10 @@ func (comp *SideRollCounter) NewData(props vugu.Props) (interface{}, error) {
 
 func (data *SideRollCounterData) Increment() {
 	data.Count++
+	IncrementStateTotal()
 }
 
 func (data *SideRollCounterData) Decrement() {
 	data.Count--
+	DecrementStateTotal()
 }
