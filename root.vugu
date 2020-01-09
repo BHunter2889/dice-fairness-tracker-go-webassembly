@@ -1,15 +1,18 @@
 <div class="root">
 	<dice-sides-grid :sides='state.NumSides' :rows='state.NumRows'></dice-sides-grid>
-	<span class="container" vg-html='state.TotalRollCount'></span>
+	<span class="container" vg-html='fmt.Sprint(state.TotalRollCount, "|", state.BalanceThreshold)'></span>
 </div>
 
 <style>
 	.root {
-		background: rgba(32,56,42,0.6);
-		background: radial-gradient(circle, rgba(32,56,42,0.4) 1%, rgba(33,31,31,0.5) 100%);
+		/*background: rgb(32,56,42);*/
+		background: rgb(32,56,42) radial-gradient(circle, rgba(32,56,42,0.4) 1%, rgba(33,31,31,0.5) 100%);
 	}
 </style>
 
 <script type="application/x-go">
-	type RootData struct {}
+	type RootData struct {
+		ExpectedRollCountDifferential int
+
+	}
 </script>

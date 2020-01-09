@@ -22,6 +22,8 @@ func (data *SideRollCounterData) Increment() {
 }
 
 func (data *SideRollCounterData) Decrement() {
-	data.Count--
-	DecrementStateTotal()
+	if data.Count > 0 {
+		data.Count--
+		DecrementStateTotal()
+	}
 }

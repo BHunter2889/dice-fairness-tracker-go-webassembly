@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"math"
 )
 
 var state *globalState
+
+const d20 = 20
+const d20ChiTableLookup = 30.143
 
 type globalState struct {
 	NumSides int `default:"20"`
@@ -14,6 +16,7 @@ type globalState struct {
 	SideRollCounters []SideRollCounterData // Will need set after initState() is called and numSides is known.
 	CounterGrid [][]SideRollCounterData
 	TotalRollCount int `default:"0"`
+	BalanceThreshold float64
 }
 
 func initState() {
@@ -35,7 +38,6 @@ func newRollCounters(numSides int) []SideRollCounterData {
 			IndexOfRow: int(i/4),
 			StyleContentString: fmt.Sprintf(`.pressed-%v span:before, .pressed-%v span:after {content:"%v"}`, i+1, i+1, i+1),
 		}
-		log.Printf("Style String %v: %s", i, ret[i].StyleContentString)
 	}
 
 	return ret
@@ -43,8 +45,16 @@ func newRollCounters(numSides int) []SideRollCounterData {
 
 func IncrementStateTotal() {
 	state.TotalRollCount++
+	computeBalanceThreshold()
 }
 
 func DecrementStateTotal() {
-	state.TotalRollCount--
+	if state.TotalRollCount > 0 {
+		state.TotalRollCount--
+		computeBalanceThreshold()
+	}
+}
+
+func computeBalanceThreshold() {
+	state.BalanceThreshold = (float64(state.TotalRollCount)/float64(20))*d20ChiTableLookup
 }
