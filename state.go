@@ -22,6 +22,7 @@ type globalState struct {
 
 type PearsonsChiSqOption struct {
 	SideRollCount int `default:"0"`
+	ExpectedRollCount float64 `default:"0.0"`
 	Error int
 	SquaredError int
 }
