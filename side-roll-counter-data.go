@@ -17,13 +17,9 @@ func (comp *SideRollCounter) NewData(props vugu.Props) (interface{}, error) {
 }
 
 func (data *SideRollCounterData) Increment() {
-	data.Count++
-	IncrementStateTotal()
+	IncrementStateTotal(data.SideNumber)
 }
 
 func (data *SideRollCounterData) Decrement() {
-	if data.Count > 0 {
-		data.Count--
-		DecrementStateTotal()
-	}
+	DecrementStateTotal(data)
 }

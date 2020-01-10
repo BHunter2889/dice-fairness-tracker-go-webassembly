@@ -1,11 +1,11 @@
 <div class="root">
 	<dice-sides-grid :sides='state.NumSides' :rows='state.NumRows'></dice-sides-grid>
-	<span class="container" vg-html='fmt.Sprint(state.TotalRollCount, "|", state.BalanceThreshold)'></span>
+	<span class="container" vg-html='fmt.Sprint(state.TotalRollCount, "|", state.DieBalanceComputationValues.BalanceThreshold)'>
+	</span>
 </div>
 
 <style>
 	.root {
-		/*background: rgb(32,56,42);*/
 		background: rgb(32,56,42) radial-gradient(circle, rgba(32,56,42,0.4) 1%, rgba(33,31,31,0.5) 100%);
 	}
 </style>
