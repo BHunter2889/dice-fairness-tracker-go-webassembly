@@ -128,6 +128,16 @@ func NewComputedPCSValues(numberOfSides int) (newCPCSValues *ComputedPearsonsChi
 	return
 }
 
+// Groups and calls all necessary compute functions.
+func (cpcsv *ComputedPearsonsChiSqValues) ComputePChSqValues(
+	currentRollCountTotal int, counts []int) (isBalanced bool, sse float64, balanceThreshold float64){
+	cpcsv.ComputeExpectedRolls(currentRollCountTotal)
+	cpcsv.ComputeBalanceThreshold(currentRollCountTotal)
+	cpcsv.ComputeSumSquaredErrorIfMinRollCountMet(currentRollCountTotal, counts)
+	isBalanced, sse, balanceThreshold = cpcsv.ComputeIsBalanced()
+	return
+}
+
 func (cpcsv *ComputedPearsonsChiSqValues) ComputeExpectedRolls(currentRollCountTotal int) {
 	cpcsv.ExpectedRollsPerSide = float64(currentRollCountTotal) / float64(cpcsv.DieConstants.NumberOfSides)
 }
@@ -136,10 +146,10 @@ func (cpcsv *ComputedPearsonsChiSqValues) ComputeBalanceThreshold(currentRollCou
 	cpcsv.BalanceThreshold = cpcsv.ExpectedRollsPerSide * cpcsv.DieConstants.ChiSqTableValue
 }
 
-func (cpcsv *ComputedPearsonsChiSqValues) ComputeSumSquaredErrorIfMinRollCountMet(currentRollCountTotal int, data []SideRollCounterData) (isMinRollCountMet bool) {
+func (cpcsv *ComputedPearsonsChiSqValues) ComputeSumSquaredErrorIfMinRollCountMet(currentRollCountTotal int, counts []int) (isMinRollCountMet bool) {
 	if cpcsv.DieConstants.MinNumberOfRolls <= currentRollCountTotal {
-		for _, option := range cpcsv.OptionComputations {
-
+		for i, option := range cpcsv.OptionComputations {
+			option.ComputeErrorAndSquaredError(counts[i], cpcsv.ExpectedRollsPerSide)
 			cpcsv.SumSquaredError += option.SquaredError
 		}
 		isMinRollCountMet = true
@@ -149,16 +159,7 @@ func (cpcsv *ComputedPearsonsChiSqValues) ComputeSumSquaredErrorIfMinRollCountMe
 	return
 }
 
-func (cpcsv *ComputedPearsonsChiSqValues) ComputeIsBalanced() (isBalanced *bool, sse *float64, balanceThreshold *float64) {
+func (cpcsv *ComputedPearsonsChiSqValues) ComputeIsBalanced() (isBalanced bool, sse float64, balanceThreshold float64) {
 	cpcsv.IsBalanced = cpcsv.SumSquaredError <= cpcsv.BalanceThreshold
-	return &cpcsv.IsBalanced, &cpcsv.SumSquaredError, &cpcsv.BalanceThreshold
-}
-
-func computeBalanceThreshold() {
-	state.DieBalanceComputationValues.ExpectedRollsPerSide = float64(state.TotalRollCount) / float64(20)
-	state.DieBalanceComputationValues.BalanceThreshold = state.DieBalanceComputationValues.ExpectedRollsPerSide * d20ChiTableLookup
-}
-
-func computeChiSqOptionValues() {
-
+	return cpcsv.IsBalanced, cpcsv.SumSquaredError, cpcsv.BalanceThreshold
 }

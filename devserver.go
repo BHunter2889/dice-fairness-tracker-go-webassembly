@@ -17,6 +17,5 @@ func main() {
 	h := simplehttp.New(wd, true)
 	// import CSS fonts
 	simplehttp.DefaultStaticData["CSSFiles"] = []string{ "assets/css/fonts.css" }
-	simplehttp.DefaultStaticData["icons"] = []string{ "assets/icons/add24.ico" }
 	log.Fatal(http.ListenAndServe(l, h))
 }

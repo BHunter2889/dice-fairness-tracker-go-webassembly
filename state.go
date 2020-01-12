@@ -51,13 +51,17 @@ func newRollCounters(numSides int) (srcData []SideRollCounterData, counts []int)
 func IncrementRollCountsInState(sideNumber int) {
 	state.SideRollCounts[sideNumber-1]++
 	state.TotalRollCount++
-	computeBalanceThreshold()
+	if state.DieBalanceComputationValues.DieConstants.MinNumberOfRolls <= state.TotalRollCount {
+		state.DieBalanceComputationValues.ComputePChSqValues(state.TotalRollCount, state.SideRollCounts)
+	}
 }
 
 func DecrementRollCountsInState(sideNumber int) {
 	if state.TotalRollCount > 0 && state.SideRollCounts[sideNumber-1] > 0 {
 		state.SideRollCounts[sideNumber-1]--
 		state.TotalRollCount--
-		computeBalanceThreshold()
+		if state.DieBalanceComputationValues.DieConstants.MinNumberOfRolls <= state.TotalRollCount {
+			state.DieBalanceComputationValues.ComputePChSqValues(state.TotalRollCount, state.SideRollCounts)
+		}
 	}
 }
