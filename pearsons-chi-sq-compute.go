@@ -23,58 +23,61 @@ var d4, d6, d8, d10, d12, d20 = initDieConstants()
 
 func initDieConstants() (d4, d6, d8, d10, d12, d20 DieConstantsBySides) {
 	d4 = DieConstantsBySides{
-		NumberOfSides: 4,
-		ChiSqTableValue: 7.815, // TODO
-		MinNumberOfRolls: 20, // 5 rolls * 4 sides
+		NumberOfSides:    4,
+		ChiSqTableValue:  7.815, // TODO
+		MinNumberOfRolls: 20,    // 5 rolls * 4 sides
 	}
 
 	d6 = DieConstantsBySides{
-		NumberOfSides: 6,
-		ChiSqTableValue: 11.070, // TODO
-		MinNumberOfRolls: 30, // 5 rolls * 6 sides
+		NumberOfSides:    6,
+		ChiSqTableValue:  11.070, // TODO
+		MinNumberOfRolls: 30,     // 5 rolls * 6 sides
 	}
 
 	d8 = DieConstantsBySides{
-		NumberOfSides: 8,
-		ChiSqTableValue: 14.067, // TODO
-		MinNumberOfRolls: 40, // 5 rolls * 8 sides
+		NumberOfSides:    8,
+		ChiSqTableValue:  14.067, // TODO
+		MinNumberOfRolls: 40,     // 5 rolls * 8 sides
 	}
 
 	d10 = DieConstantsBySides{
-		NumberOfSides: 10,
-		ChiSqTableValue: 16.919, // TODO
-		MinNumberOfRolls: 50, // 5 rolls * 10 sides
+		NumberOfSides:    10,
+		ChiSqTableValue:  16.919, // TODO
+		MinNumberOfRolls: 50,     // 5 rolls * 10 sides
 	}
 
 	d12 = DieConstantsBySides{
-		NumberOfSides: 12,
-		ChiSqTableValue: 19.675, // TODO
-		MinNumberOfRolls: 60, // 5 rolls * 12 sides
+		NumberOfSides:    12,
+		ChiSqTableValue:  19.675, // TODO
+		MinNumberOfRolls: 60,     // 5 rolls * 12 sides
 	}
 
 	d20 = DieConstantsBySides{
-		NumberOfSides: 20,
-		ChiSqTableValue: 30.143, // TODO
-		MinNumberOfRolls: 100, // 5 rolls * 20 sides
+		NumberOfSides:    20,
+		ChiSqTableValue:  30.143, // TODO
+		MinNumberOfRolls: 100,    // 5 rolls * 20 sides
 	}
 	return
 }
 
-func GetDieConstantsBySides(numberOfSides int) DieConstantsBySides {
+func GetDieConstantsBySides(numberOfSides int) (d DieConstantsBySides) {
 	switch numberOfSides {
 	case 4:
-		return d4
+		d = d4
 	case 6:
-		return d6
+		d = d6
 	case 8:
-		return d8
+		d = d8
 	case 10:
-		return d10
+		d = d10
 	case 12:
-		return d12
+		d = d12
 	case 20:
-		return d20
+		d = d20
+	default:
+		d = d20
 	}
+	return
 }
 
 /**
@@ -82,10 +85,10 @@ func GetDieConstantsBySides(numberOfSides int) DieConstantsBySides {
 	and for each die as a whole (`ComputedPearsonsChiSqValues`).
  */
 type PearsonsChiSqOption struct {
-	SideRollCount     int     `default:"0"`
-	ExpectedRollCount float64 `default:"0.0"`
-	Error             float64 `default:"0.0"` // `SideRollCount - ExpectedRollCount`
-	SquaredError      float64 `default:"0.0"` // `math.Pow(Error, 2)` aka Error^2
+	SideRollCount     int     `default:"0"`    // Should be passed in each time Compute is called, but stored for display.
+	ExpectedRollCount float64 `default:"0.0"`  // Should be passed in each time Compute is called, but stored for display.
+	Error             float64  `default:"0.0"` // `SideRollCount - ExpectedRollCount`
+	SquaredError      float64  `default:"0.0"` // `math.Pow(Error, 2)` aka Error^2
 }
 
 type ComputedPearsonsChiSqValues struct {
@@ -115,6 +118,15 @@ func (option *PearsonsChiSqOption) ComputeErrorAndSquaredError(
 /**
 	Methods for Computing the Pearson's Chi-Square analysis
  */
+
+func NewComputedPCSValues(numberOfSides int) (newCPCSValues *ComputedPearsonsChiSqValues) {
+	newCPCSValues.DieConstants = GetDieConstantsBySides(numberOfSides)
+	newCPCSValues.OptionComputations = make([]PearsonsChiSqOption, numberOfSides)
+	for i := 0; i < numberOfSides; i++ {
+		newCPCSValues.OptionComputations[i] = PearsonsChiSqOption{}
+	}
+	return
+}
 
 func (cpcsv *ComputedPearsonsChiSqValues) ComputeExpectedRolls(currentRollCountTotal int) {
 	cpcsv.ExpectedRollsPerSide = float64(currentRollCountTotal) / float64(cpcsv.DieConstants.NumberOfSides)
