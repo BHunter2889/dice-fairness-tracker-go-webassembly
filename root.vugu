@@ -1,7 +1,13 @@
 <div class="root">
 	<dice-sides-grid :sides='state.NumSides' :rows='state.NumRows'></dice-sides-grid>
-	<span class="container" vg-html='fmt.Sprint(state.TotalRollCount, "|", state.DieBalanceComputationValues.BalanceThreshold)'>
-	</span>
+	<div class="container">
+		<span class="" vg-html='fmt.Sprint(*data.TotalRollCount, " | ")'></span>
+		<span class="" vg-html='fmt.Sprint(state.DieBalanceComputationValues.DieConstants.MinNumberOfRolls, " | ")'></span>
+		<span class="" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.BalanceThreshold, " | ")'></span>
+		<span class="" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.ExpectedRollsPerSide, " | ")'></span>
+		<span class="" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.SumSquaredError, " | ")'></span>
+		<span class="" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.IsBalanced)'></span>
+	</div>
 </div>
 
 <style>
@@ -12,7 +18,31 @@
 
 <script type="application/x-go">
 	type RootData struct {
-		ExpectedRollCountDifferential int
+		NumSides             int `default:"20"`
+		NumRows              int `default:"5"`
+		TotalRollCount       *int `default:"0"`
+		MinNumberOfRolls 	 int
+		IsMinNumRollsMet 	 bool `default:"false"`
+		BalanceThreshold     float64 `default:"0.0"`   // Threshold for the SumSquaredError.
+		ExpectedRollsPerSide float64 `default:"0.0"`   // `TotalRollCount/NumberOfSides`
+		SumSquaredError      float64 `default:"0.0"`   // Total of all options SquaredError different from expected roll count. aka 'SSE'
+		IsBalanced           bool    `default:"false"` // SSE <= BalanceThreshold
+	}
 
+	func (comp *Root) NewData(props vugu.Props) (interface{}, error) {
+
+		ret := &RootData{
+			//NumSides: state
+			//NumRows: props["NumRows"].(int),
+			TotalRollCount: &state.TotalRollCount,
+			//MinNumberOfRolls: props["MinNumberOfRolls"].(int),
+			//IsMinNumRollsMet: props["IsMinNumRollsMet"].(bool),
+			//IsMinNumRollsMet:isMinRollsMet,
+			//BalanceThreshold: props["BalanceThreshold"].(float64),
+			//ExpectedRollsPerSide: props["ExpectedRollsPerSide"].(float64),
+			//SumSquaredError: props["SumSquaredError"].(float64),
+			//IsBalanced: props["IsBalanced"].(bool),
+		}
+		return ret, nil
 	}
 </script>

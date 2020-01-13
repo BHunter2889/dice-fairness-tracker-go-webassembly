@@ -7,7 +7,7 @@
 		<button class="count-decrement" @click="data.Decrement()" >
 			<svg class="hexagon"><image xlink:href="assets/icons/minus.svg" class="hexagon"></image></svg>
 		</button>
-		<input class='count-input' type='text' :value='data.Count'/>
+		<span class='pressed' type='text' vg-html='*data.Count'></span>
 		<button class="count-increment" @click="data.Increment()" ></button>
 	</div>
 

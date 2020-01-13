@@ -97,7 +97,7 @@ type ComputedPearsonsChiSqValues struct {
 	BalanceThreshold     float64 `default:"0.0"`   // Threshold for the SumSquaredError.
 	ExpectedRollsPerSide float64 `default:"0.0"`   // `TotalRollCount/NumberOfSides`
 	SumSquaredError      float64 `default:"0.0"`   // Total of all options SquaredError different from expected roll count. aka 'SSE'
-	IsBalanced           bool    `default:"false"` // SSE <== BalanceThreshold
+	IsBalanced           bool    `default:"false"` // SSE <= BalanceThreshold
 }
 
 /**
@@ -120,6 +120,7 @@ func (option *PearsonsChiSqOption) ComputeErrorAndSquaredError(
  */
 
 func NewComputedPCSValues(numberOfSides int) (newCPCSValues *ComputedPearsonsChiSqValues) {
+	newCPCSValues = &ComputedPearsonsChiSqValues{}
 	newCPCSValues.DieConstants = GetDieConstantsBySides(numberOfSides)
 	newCPCSValues.OptionComputations = make([]PearsonsChiSqOption, numberOfSides)
 	for i := 0; i < numberOfSides; i++ {
@@ -148,10 +149,12 @@ func (cpcsv *ComputedPearsonsChiSqValues) ComputeBalanceThreshold(currentRollCou
 
 func (cpcsv *ComputedPearsonsChiSqValues) ComputeSumSquaredErrorIfMinRollCountMet(currentRollCountTotal int, counts []int) (isMinRollCountMet bool) {
 	if cpcsv.DieConstants.MinNumberOfRolls <= currentRollCountTotal {
+		newSSE := 0.0
 		for i, option := range cpcsv.OptionComputations {
 			option.ComputeErrorAndSquaredError(counts[i], cpcsv.ExpectedRollsPerSide)
-			cpcsv.SumSquaredError += option.SquaredError
+			newSSE += option.SquaredError
 		}
+		cpcsv.SumSquaredError = newSSE
 		isMinRollCountMet = true
 		return
 	}

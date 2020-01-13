@@ -86,11 +86,9 @@ func (comp *SideRollCounter) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, cs
 			}
 			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 			parent.AppendChild(n)
-			n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "input", DataAtom: vugu.VGAtom(281349), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "count-input"}, vugu.VGAttribute{Namespace: "", Key: "type", Val: "text"}}}
+			n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "span", DataAtom: vugu.VGAtom(40708), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "pressed"}, vugu.VGAttribute{Namespace: "", Key: "type", Val: "text"}}}
 			parent.AppendChild(n)
-			n.Props = vugu.Props{
-				"value": data.Count,
-			}
+			n.InnerHTML = fmt.Sprint(*data.Count)
 			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 			parent.AppendChild(n)
 			n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "button", DataAtom: vugu.VGAtom(102662), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "count-increment"}}}

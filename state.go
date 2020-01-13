@@ -14,6 +14,7 @@ type globalState struct {
 	SideRollCounters            []SideRollCounterData   // Will need set after initState() is called and numSides is known.
 	CounterGrid                 [][]SideRollCounterData // TODO: Is this needed? Will it help with Styling the counter grid?
 	TotalRollCount              int `default:"0"`
+	IsMinNumRollsMet			bool
 	DieBalanceComputationValues *ComputedPearsonsChiSqValues
 }
 
@@ -26,6 +27,7 @@ func (s *globalState) initGrid(numSides int) {
 	s.NumRows = int(math.Ceil(float64(numSides / 4)))
 	s.SideRollCounters, s.SideRollCounts = newRollCounters(numSides)
 	s.DieBalanceComputationValues = NewComputedPCSValues(numSides)
+	s.TotalRollCount = 0
 }
 
 func (s *globalState) GetRollCounterDataForSide(sideNumber int) *SideRollCounterData {
@@ -51,7 +53,8 @@ func newRollCounters(numSides int) (srcData []SideRollCounterData, counts []int)
 func IncrementRollCountsInState(sideNumber int) {
 	state.SideRollCounts[sideNumber-1]++
 	state.TotalRollCount++
-	if state.DieBalanceComputationValues.DieConstants.MinNumberOfRolls <= state.TotalRollCount {
+	state.IsMinNumRollsMet = state.DieBalanceComputationValues.DieConstants.MinNumberOfRolls <= state.TotalRollCount
+	if state.IsMinNumRollsMet {
 		state.DieBalanceComputationValues.ComputePChSqValues(state.TotalRollCount, state.SideRollCounts)
 	}
 }
