@@ -8,11 +8,17 @@
 		<span class="" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.SumSquaredError, " | ")'></span>
 		<span class="" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.IsBalanced)'></span>
 	</div>
+	<div vg-for'i := 0; i < 15; i++' class="firefly"></div> // TODO: Figure out how to put this above root, or what root currently is.
 </div>
 
 <style>
 	.root {
-		background: rgb(32,56,42) radial-gradient(circle, rgba(32,56,42,0.4) 1%, rgba(33,31,31,0.5) 100%);
+		/*background: rgb(32,56,42) radial-gradient(circle, rgba(32,56,42,0.4) 1%, rgba(33,31,31,0.5) 100%);*/
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		position: absolute;
 	}
 </style>
 

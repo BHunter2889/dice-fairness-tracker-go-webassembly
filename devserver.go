@@ -16,6 +16,6 @@ func main() {
 	log.Printf("Starting HTTP Server at %q", l)
 	h := simplehttp.New(wd, true)
 	// import CSS fonts
-	simplehttp.DefaultStaticData["CSSFiles"] = []string{ "assets/css/fonts.css" }
+	simplehttp.DefaultStaticData["CSSFiles"] = []string{ "assets/css/fonts.css", "assets/css/index.css" }
 	log.Fatal(http.ListenAndServe(l, h))
 }
