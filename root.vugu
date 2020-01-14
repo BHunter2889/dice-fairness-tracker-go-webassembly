@@ -8,7 +8,7 @@
 		<span class="" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.SumSquaredError, " | ")'></span>
 		<span class="" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.IsBalanced)'></span>
 	</div>
-	<div vg-for'i := 0; i < 15; i++' class="firefly"></div> // TODO: Figure out how to put this above root, or what root currently is.
+	<div vg-for='i := 0; i < 15; i++' class="firefly"></div> // TODO: Figure out how to put this above root, or what root currently is.
 </div>
 
 <style>
