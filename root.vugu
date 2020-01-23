@@ -1,25 +1,70 @@
 <div class="root">
 	<dice-sides-grid :sides='state.NumSides' :rows='state.NumRows'></dice-sides-grid>
-	<div class="container">
-		<span class="" vg-html='fmt.Sprint(*data.TotalRollCount, " | ")'></span>
-		<span class="" vg-html='fmt.Sprint(state.DieBalanceComputationValues.DieConstants.MinNumberOfRolls, " | ")'></span>
-		<span class="" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.BalanceThreshold, " | ")'></span>
-		<span class="" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.ExpectedRollsPerSide, " | ")'></span>
-		<span class="" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.SumSquaredError, " | ")'></span>
-		<span class="" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.IsBalanced)'></span>
+	<div class="stat-score-block-row">
+		<div class="stat-score-block" vg-html='fmt.Sprint(*data.TotalRollCount, " | ")'></div>
+		<div class="stat-score-block" vg-html='fmt.Sprint(state.DieBalanceComputationValues.DieConstants.MinNumberOfRolls, " | ")'></div>
+		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.BalanceThreshold, " | ")'></div>
+		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.ExpectedRollsPerSide, " | ")'></div>
+		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.SumSquaredError, " | ")'></div>
+		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.IsBalanced)'></div>
 	</div>
 	<div vg-for='i := 0; i < 15; i++' class="firefly"></div> // TODO: Figure out how to put this above root, or what root currently is.
 </div>
 
 <style>
-	.root {
+	div.root {
 		/*background: rgb(32,56,42) radial-gradient(circle, rgba(32,56,42,0.4) 1%, rgba(33,31,31,0.5) 100%);*/
-		height: 100%;
+		/*background: inherit;*/
 		width: 100%;
-		margin: 0;
-		padding: 0;
+		height: 100%;
+		/*position: relative;*/
+		overflow: hidden;
+		background-size: cover;
+		/*margin: 50px;*/
+		/*max-width: 100%;*/
+		/*max-height: 100%;*/
 		position: absolute;
+
+		/* TODO: Maybe? */
+		 display: flex;
+		 justify-content: center;
+		 align-items: center;
+		 flex-flow: column;
+		}
+
+	div.root:before {
+		content: close-quote;
+		background: inherit;
+		position: absolute;
+		left: -10px;
+		right: -10px;
+		top: -10px;
+		bottom: -10px;
+		box-shadow: inset 0 0 0 2000px rgba(255,255,255,0.1);
+		filter: blur(1px);
+		/*max-width: 100%;*/
+		/*max-height: 100%;*/
 	}
+
+	.stat-score-block {
+		position: relative;
+		width: 81px;
+		height: 95px;
+		background: 50% transparent url(https://www.dndbeyond.com/Content/Skins/Waterdeep/images/character-sheet/content-frames/abilityscore.svg) no-repeat;
+		background-size: contain;
+		text-align: center;
+	}
+
+	.stat-score-block-row {
+		width: 100%;
+		height: 20%;
+		display: flex;
+		justify-content: space-around;
+		position: relative;
+	}
+
+
+
 </style>
 
 <script type="application/x-go">
