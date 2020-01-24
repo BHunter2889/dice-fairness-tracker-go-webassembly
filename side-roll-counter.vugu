@@ -23,13 +23,12 @@
 		transition: 0.3s;
 		width: auto;
 		margin: 20px; // TODO
-		/*flex-grow: 1;*/
 	}
 
 	.container {
 		padding: 2px 16px;
 		display: inline-block;
-		height: 75px;
+		/*height: 75px;*/
 	}
 
 	.count-decrement {

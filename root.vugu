@@ -26,11 +26,14 @@
 		position: absolute;
 
 		/* TODO: Maybe? */
-		 display: flex;
-		 justify-content: center;
-		 align-items: center;
-		 flex-flow: column;
-		}
+		 /*display: flex;*/
+		 /*justify-content: center;*/
+		 /*align-items: center;*/
+		 /*flex-flow: column;*/
+		display: grid;
+		grid-template-rows: 80% 1fr;
+		/*grid-template-rows: [counter-grid-start] 80% [counter-grid-end stat-row-start] 1fr [stat-row-end];*/
+	}
 
 	div.root:before {
 		content: close-quote;
@@ -57,10 +60,12 @@
 
 	.stat-score-block-row {
 		width: 100%;
-		height: 20%;
+		/*height: 20%;*/
 		display: flex;
 		justify-content: space-around;
-		position: relative;
+		position: absolute;
+		grid-row-start: 2;
+		grid-row-end: 3;
 	}
 
 
