@@ -7,7 +7,7 @@
 		<button class="count-decrement" @click="data.Decrement()" >
 			<svg class="hexagon"><image xlink:href="assets/icons/minus.svg" class="hexagon"></image></svg>
 		</button>
-		<span class='pressed' type='text' vg-html='*data.Count'></span>
+		<div class='roll-counter-count' type='text' vg-html='*data.Count'></div>
 		<button class="count-increment" @click="data.Increment()" ></button>
 	</div>
 
@@ -19,16 +19,45 @@
 	}
 
 	.side-roll-counter {
-		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+		/*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
+		/*transition: 0.3s;*/
+		/*!*width: auto;*!*/
+		/*margin: 20px;*/
+		/*position: relative;*/
+		/*width: 81px;*/
+		/*height: 95px;*/
+		/*background: 50% transparent url(https://www.dndbeyond.com/Content/Skins/Waterdeep/images/character-sheet/content-frames/abilityscore.svg) no-repeat;*/
+		/*background-size: contain;*/
+		/*text-align: center;*/
+
+		/* TODO: Decide whether this is better: */
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), inset 0 0 0 2000px rgba(255,255,255,0.1);
 		transition: 0.3s;
-		width: auto;
-		margin: 20px; // TODO
+		/* width: auto; */
+		margin: 20px;
+		position: relative;
+		width: 81px;
+		height: 95px;
+		z-index: 100;
+		background: 50% transparent url(https://www.dndbeyond.com/Content/Skins/Waterdeep/images/character-sheet/content-frames/abilityscore.svg) no-repeat;
+		background-size: contain;
+		text-align: center;
 	}
 
 	.container {
-		padding: 2px 16px;
-		display: inline-block;
+		padding: 2px 10%;
+		display: flex;
 		/*height: 75px;*/
+		justify-content: space-between;
+	}
+
+	.roll-counter-count {
+		position: absolute;
+		font-weight: 700;
+		left: 0;
+		right: 0;
+		bottom: 4px;
+		font-size: 16px;
 	}
 
 	.count-decrement {
@@ -43,8 +72,8 @@
 		border: 0;
 		width: 25px;
 		height: 25px;
-		float: left;
-		margin: 0 6px 0 0;
+		/*float: left;*/
+		/*margin: 0 6px 0 0;*/
 	}
 
 	.count-decrement:after {
@@ -70,12 +99,12 @@
 		border: 0;
 		width: 25px;
 		height: 25px;
-		float: right;
-		margin: 0 0 0 6px;
+		/*float: right;*/
+		/*margin: 0 0 0 6px;*/
 	}
 
 	[class|="pressed"] {
-		background: #333 url(//stephy.mccdgm.net/images/patterns/gray_sand.png);
+		/*background: #333 url(//stephy.mccdgm.net/images/patterns/gray_sand.png);*/
 		text-align: center;
 		font-size: x-large;
 	}
