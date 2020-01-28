@@ -8,7 +8,7 @@
 		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.SumSquaredError, " | ")'></div>
 		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.IsBalanced)'></div>
 	</div>
-	<div vg-for='i := 0; i < 15; i++' class="firefly"></div> // TODO: Figure out how to put this above root, or what root currently is.
+	<div vg-for='i := 0; i < 15; i++' class="firefly"></div>
 </div>
 
 <style>
@@ -53,7 +53,7 @@
 		position: relative;
 		width: 81px;
 		height: 95px;
-		background: 50% transparent url(https://www.dndbeyond.com/Content/Skins/Waterdeep/images/character-sheet/content-frames/abilityscore.svg) no-repeat;
+		background: 50% transparent url(https://www.dndbeyond.com/Content/Skins/Waterdeep/images/character-sheet/content-frames/ac.svg) no-repeat;
 		background-size: contain;
 		text-align: center;
 	}
