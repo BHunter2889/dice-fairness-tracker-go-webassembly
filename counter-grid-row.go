@@ -26,7 +26,7 @@ func (comp *CounterGridRow) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css
 	event := vugu.DOMEventStub
 	_ = event
 	css = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "style", DataAtom: vugu.VGAtom(458501), Namespace: "", Attr: []vugu.VGAttribute(nil)}
-	css.AppendChild(&vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t.counter-grid-row {\n\t\twidth: 100%;\n\t\tdisplay: inline-flex;\n\t\tjustify-content: space-evenly;\n\t}\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)})
+	css.AppendChild(&vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t.counter-grid-row {\n\t\t/*width: 100%;*/\n\t\tdisplay: flex;\n\t\tjustify-content: space-around;\n\t}\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)})
 	var n *vugu.VGNode
 	n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "span", DataAtom: vugu.VGAtom(40708), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "counter-grid-row"}}}
 	vdom = n

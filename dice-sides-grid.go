@@ -34,7 +34,7 @@ func (comp *DiceSidesGrid) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css 
 	event := vugu.DOMEventStub
 	_ = event
 	css = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "style", DataAtom: vugu.VGAtom(458501), Namespace: "", Attr: []vugu.VGAttribute(nil)}
-	css.AppendChild(&vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t.dice-sides-grid {\n\t\theight: 80%;\n\t\tposition: absolute;\n\t\t/* max-height: 100%; */\n\t\t/* display: block; */\n\t\tmargin: auto;\n\t\tdisplay: grid;\n\t\tgrid-row-start: 1;\n\t\tgrid-row-end: 2;\n\t}\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)})
+	css.AppendChild(&vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t.dice-sides-grid {\n\t\t/*height: 80%;*/\n\t\t/*position: absolute;*/\n\t\t/* max-height: 100%; */\n\t\t/* display: block; */\n\t\t/*margin: auto;*/\n\t\tdisplay: grid;\n\t\tgrid-row-start: 1;\n\t\tgrid-row-end: 2;\n\t\tgrid-row: auto;\n\t}\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)})
 	var n *vugu.VGNode
 	n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "dice-sides-grid"}}}
 	vdom = n
