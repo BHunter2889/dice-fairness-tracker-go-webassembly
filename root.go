@@ -45,7 +45,7 @@ func (comp *Root) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css *vugu.VGN
 	event := vugu.DOMEventStub
 	_ = event
 	css = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "style", DataAtom: vugu.VGAtom(458501), Namespace: "", Attr: []vugu.VGAttribute(nil)}
-	css.AppendChild(&vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\tdiv.root {\n\t\t/*background: rgb(32,56,42) radial-gradient(circle, rgba(32,56,42,0.4) 1%, rgba(33,31,31,0.5) 100%);*/\n\t\t/*background: inherit;*/\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\t/*position: relative;*/\n\t\toverflow: hidden;\n\t\tbackground-size: cover;\n\t\t/*margin: 50px;*/\n\t\t/*max-width: 100%;*/\n\t\t/*max-height: 100%;*/\n\t\tposition: absolute;\n\n\t\t/* TODO: Maybe? */\n\t\t /*display: flex;*/\n\t\t /*justify-content: center;*/\n\t\t /*align-items: center;*/\n\t\t /*flex-flow: column;*/\n\t\tdisplay: grid;\n\t\tgrid-template-rows: 80% 1fr;\n\t\t/*grid-template-rows: [counter-grid-start] 80% [counter-grid-end stat-row-start] 1fr [stat-row-end];*/\n\t}\n\n\tdiv.root:before {\n\t\tcontent: close-quote;\n\t\tbackground: inherit;\n\t\tposition: absolute;\n\t\tleft: -10px;\n\t\tright: -10px;\n\t\ttop: -10px;\n\t\tbottom: -10px;\n\t\tbox-shadow: inset 0 0 0 2000px rgba(255,255,255,0.1);\n\t\tfilter: blur(1px);\n\t\t/*max-width: 100%;*/\n\t\t/*max-height: 100%;*/\n\t}\n\n\t.stat-score-block {\n\t\t/*position: relative;*/\n\t\t/*width: 81px;*/\n\t\t/*height: 95px;*/\n\t\tbackground: 50% transparent url(https://www.dndbeyond.com/Content/Skins/Waterdeep/images/character-sheet/content-frames/ac.svg) no-repeat;\n\t\tbackground-size: contain;\n\t\ttext-align: center;\n\t\tfilter: drop-shadow(1px 2px 2px black);\n\t\tflex-grow: 1;\n\t}\n\n\t.stat-score-block-row {\n\t\t/*width: 100%;*/\n\t\t/*height: 20%;*/\n\t\tdisplay: flex;\n\t\tjustify-content: space-around;\n\t\t/*position: relative;*/\n\t\tgrid-row-start: 2;\n\t\tgrid-row-end: 3;\n\t}\n\n\n\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)})
+	css.AppendChild(&vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\tdiv.root {\n\t\t/*background: rgb(32,56,42) radial-gradient(circle, rgba(32,56,42,0.4) 1%, rgba(33,31,31,0.5) 100%);*/\n\t\t/*background: inherit;*/\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\t/*position: relative;*/\n\t\toverflow: hidden;\n\t\tbackground-size: cover;\n\t\t/*margin: 50px;*/\n\t\t/*max-width: 100%;*/\n\t\t/*max-height: 100%;*/\n\t\tposition: absolute;\n\n\t\t/* TODO: Maybe? */\n\t\t /*display: flex;*/\n\t\t /*justify-content: center;*/\n\t\t /*align-items: center;*/\n\t\t /*flex-flow: column;*/\n\t\tdisplay: grid;\n\t\tgrid-template-rows: 80% 1fr;\n\t\tplace-items: center;\n\t\t/*grid-template-rows: [counter-grid-start] 80% [counter-grid-end stat-row-start] 1fr [stat-row-end];*/\n\t}\n\n\tdiv.root:before {\n\t\tcontent: close-quote;\n\t\tbackground: inherit;\n\t\tposition: absolute;\n\t\tleft: -10px;\n\t\tright: -10px;\n\t\ttop: -10px;\n\t\tbottom: -10px;\n\t\tbox-shadow: inset 0 0 0 2000px rgba(255,255,255,0.1);\n\t\tfilter: blur(1px);\n\t\t/*max-width: 100%;*/\n\t\t/*max-height: 100%;*/\n\t}\n\n\t.stat-score-block {\n\t\tposition: relative;\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t\tjustify-content: center;\n\t\toverflow-x: auto;\n\t\t/*width: 81px;*/\n\t\t/*height: 95px;*/\n\t\tbackground: 50% transparent url(https://www.dndbeyond.com/Content/Skins/Waterdeep/images/character-sheet/content-frames/ac.svg) no-repeat;\n\t\tbackground-size: contain;\n\t\ttext-align: center;\n\t\tcolor: #838383;\n\t\tfont-size: large;\n\t\tline-height: 1;\n\t}\n\n\t.stat-score-block-data {\n\t\tfont-weight: 700;\n\t\tfont-size: xx-large;\n\t\tletter-spacing: -1px;\n\t\tcolor: black;\n\t}\n\n\t.stat-score-block-row {\n\t\t/*width: 100%;*/\n\t\t/*!*height: 20%;*!*/\n\t\t/*display: flex;*/\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tdisplay: grid;\n\t\tjustify-content: space-around;\n\t\tposition: absolute;\n\t\tgrid-row-start: 2;\n\t\tgrid-row-end: 3;\n\t\tgrid-template-rows: 1fr;\n\t\tgrid-template-columns: repeat(6, 1fr);\n\t\t/*flex-grow: 1;*/\n\t}\n\n\n\n", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)})
 	var n *vugu.VGNode
 	n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "root"}}}
 	vdom = n
@@ -69,39 +69,183 @@ func (comp *Root) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css *vugu.VGN
 			parent.AppendChild(n)
 			n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block"}}}
 			parent.AppendChild(n)
-			n.InnerHTML = fmt.Sprint(fmt.Sprint(*data.TotalRollCount, " | "))
+			n.InnerHTML = fmt.Sprint("Total Rolls:")
+			{
+				parent := n
+				n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+				parent.AppendChild(n)
+				n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block-data"}}}
+				parent.AppendChild(n)
+				n.InnerHTML = fmt.Sprint(fmt.Sprint(*data.TotalRollCount))
+				n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+				parent.AppendChild(n)
+			}
 			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 			parent.AppendChild(n)
 			n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block"}}}
 			parent.AppendChild(n)
-			n.InnerHTML = fmt.Sprint(fmt.Sprint(state.DieBalanceComputationValues.DieConstants.MinNumberOfRolls, " | "))
+			n.InnerHTML = fmt.Sprint("Min # Rolls: ")
+			{
+				parent := n
+				n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+				parent.AppendChild(n)
+				n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block-data"}}}
+				parent.AppendChild(n)
+				n.InnerHTML = fmt.Sprint(fmt.Sprint(state.DieBalanceComputationValues.DieConstants.MinNumberOfRolls))
+				n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+				parent.AppendChild(n)
+			}
 			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 			parent.AppendChild(n)
-			if state.IsMinNumRollsMet {
+			if !state.IsMinNumRollsMet {
 				n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block"}}}
 				parent.AppendChild(n)
-				n.InnerHTML = fmt.Sprint(fmt.Sprint(state.DieBalanceComputationValues.BalanceThreshold, " | "))
+				n.InnerHTML = fmt.Sprint("Balance Threshold: ")
+				{
+					parent := n
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+					if !state.IsMinNumRollsMet {
+						n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block-data"}}}
+						parent.AppendChild(n)
+						n.InnerHTML = fmt.Sprint(fmt.Sprint("Min # Rolls Not Met"))
+					}
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+				}
 			}
 			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 			parent.AppendChild(n)
 			if state.IsMinNumRollsMet {
 				n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block"}}}
 				parent.AppendChild(n)
-				n.InnerHTML = fmt.Sprint(fmt.Sprint(state.DieBalanceComputationValues.ExpectedRollsPerSide, " | "))
+				n.InnerHTML = fmt.Sprint("Balance Threshold: ")
+				{
+					parent := n
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+					if state.IsMinNumRollsMet {
+						n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block-data"}}}
+						parent.AppendChild(n)
+						n.InnerHTML = fmt.Sprint(fmt.Sprint(state.DieBalanceComputationValues.BalanceThreshold))
+					}
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+				}
+			}
+			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+			parent.AppendChild(n)
+			if !state.IsMinNumRollsMet {
+				n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block"}}}
+				parent.AppendChild(n)
+				n.InnerHTML = fmt.Sprint("Expected Rolls/Side: ")
+				{
+					parent := n
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+					if !state.IsMinNumRollsMet {
+						n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block-data"}}}
+						parent.AppendChild(n)
+						n.InnerHTML = fmt.Sprint(fmt.Sprint("Min # Rolls Not Met"))
+					}
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+				}
 			}
 			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 			parent.AppendChild(n)
 			if state.IsMinNumRollsMet {
 				n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block"}}}
 				parent.AppendChild(n)
-				n.InnerHTML = fmt.Sprint(fmt.Sprint(state.DieBalanceComputationValues.SumSquaredError, " | "))
+				n.InnerHTML = fmt.Sprint("Expected Rolls/Side: ")
+				{
+					parent := n
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+					if !state.IsMinNumRollsMet {
+						n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block-data"}}}
+						parent.AppendChild(n)
+						n.InnerHTML = fmt.Sprint(fmt.Sprint(state.DieBalanceComputationValues.ExpectedRollsPerSide))
+					}
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+				}
+			}
+			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+			parent.AppendChild(n)
+			if !state.IsMinNumRollsMet {
+				n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block"}}}
+				parent.AppendChild(n)
+				n.InnerHTML = fmt.Sprint("Sum Squared Error: ")
+				{
+					parent := n
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+					if !state.IsMinNumRollsMet {
+						n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block-data"}}}
+						parent.AppendChild(n)
+						n.InnerHTML = fmt.Sprint(fmt.Sprint("Min # Rolls Not Met"))
+					}
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+				}
 			}
 			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 			parent.AppendChild(n)
 			if state.IsMinNumRollsMet {
 				n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block"}}}
 				parent.AppendChild(n)
-				n.InnerHTML = fmt.Sprint(fmt.Sprint(state.DieBalanceComputationValues.IsBalanced))
+				n.InnerHTML = fmt.Sprint("Sum Squared Error: ")
+				{
+					parent := n
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+					if !state.IsMinNumRollsMet {
+						n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block-data"}}}
+						parent.AppendChild(n)
+						n.InnerHTML = fmt.Sprint(fmt.Sprint(state.DieBalanceComputationValues.SumSquaredError))
+					}
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+				}
+			}
+			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+			parent.AppendChild(n)
+			if !state.IsMinNumRollsMet {
+				n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block"}}}
+				parent.AppendChild(n)
+				n.InnerHTML = fmt.Sprint("Balanced: ")
+				{
+					parent := n
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+					if !state.IsMinNumRollsMet {
+						n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block-data"}}}
+						parent.AppendChild(n)
+						n.InnerHTML = fmt.Sprint(fmt.Sprint("Min # Rolls Not Met"))
+					}
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+				}
+			}
+			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+			parent.AppendChild(n)
+			if state.IsMinNumRollsMet {
+				n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block"}}}
+				parent.AppendChild(n)
+				n.InnerHTML = fmt.Sprint("Balanced: ")
+				{
+					parent := n
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+					if !state.IsMinNumRollsMet {
+						n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block-data"}}}
+						parent.AppendChild(n)
+						n.InnerHTML = fmt.Sprint(fmt.Sprint(state.DieBalanceComputationValues.IsBalanced))
+					}
+					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
+					parent.AppendChild(n)
+				}
 			}
 			n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 			parent.AppendChild(n)

@@ -1,12 +1,36 @@
 <div class="root">
 	<dice-sides-grid :sides='state.NumSides' :rows='state.NumRows'></dice-sides-grid>
 	<div class="stat-score-block-row">
-		<div class="stat-score-block" vg-html='fmt.Sprint(*data.TotalRollCount, " | ")'></div>
-		<div class="stat-score-block" vg-html='fmt.Sprint(state.DieBalanceComputationValues.DieConstants.MinNumberOfRolls, " | ")'></div>
-		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.BalanceThreshold, " | ")'></div>
-		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.ExpectedRollsPerSide, " | ")'></div>
-		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.SumSquaredError, " | ")'></div>
-		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.IsBalanced)'></div>
+		<div class="stat-score-block" vg-html='"Total Rolls:"'>
+			<div class="stat-score-block-data" vg-html='fmt.Sprint(*data.TotalRollCount)'></div>
+		</div>
+		<div class="stat-score-block" vg-html='"Min # Rolls: "'>
+			<div class="stat-score-block-data" vg-html='fmt.Sprint(state.DieBalanceComputationValues.DieConstants.MinNumberOfRolls)'></div>
+		</div>
+		<div class="stat-score-block" vg-if='!state.IsMinNumRollsMet' vg-html='"Balance Threshold: "'>
+			<div class="stat-score-block-data" vg-if='!state.IsMinNumRollsMet' vg-html='fmt.Sprint("Min # Rolls Not Met")'></div>
+		</div>
+		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='"Balance Threshold: "'>
+			<div class="stat-score-block-data" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.BalanceThreshold)'></div>
+		</div>
+		<div class="stat-score-block" vg-if='!state.IsMinNumRollsMet' vg-html='"Expected Rolls/Side: "'>
+			<div class="stat-score-block-data" vg-if='!state.IsMinNumRollsMet' vg-html='fmt.Sprint("Min # Rolls Not Met")'></div>
+		</div>
+		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='"Expected Rolls/Side: "'>
+			<div class="stat-score-block-data" vg-if='!state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.ExpectedRollsPerSide)'></div>
+		</div>
+		<div class="stat-score-block" vg-if='!state.IsMinNumRollsMet' vg-html='"Sum Squared Error: "'>
+			<div class="stat-score-block-data" vg-if='!state.IsMinNumRollsMet' vg-html='fmt.Sprint("Min # Rolls Not Met")'></div>
+		</div>
+		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='"Sum Squared Error: "'>
+			<div class="stat-score-block-data" vg-if='!state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.SumSquaredError)'></div>
+		</div>
+		<div class="stat-score-block" vg-if='!state.IsMinNumRollsMet' vg-html='"Balanced: "'>
+			<div class="stat-score-block-data" vg-if='!state.IsMinNumRollsMet' vg-html='fmt.Sprint("Min # Rolls Not Met")'></div>
+		</div>
+		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='"Balanced: "'>
+			<div class="stat-score-block-data" vg-if='!state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.IsBalanced)'></div>
+		</div>
 	</div>
 	<div vg-for='i := 0; i < 15; i++' class="firefly"></div>
 </div>
@@ -32,6 +56,7 @@
 		 /*flex-flow: column;*/
 		display: grid;
 		grid-template-rows: 80% 1fr;
+		place-items: center;
 		/*grid-template-rows: [counter-grid-start] 80% [counter-grid-end stat-row-start] 1fr [stat-row-end];*/
 	}
 
@@ -50,24 +75,44 @@
 	}
 
 	.stat-score-block {
-		/*position: relative;*/
+		position: relative;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		/*overflow-x: auto;*/
 		/*width: 81px;*/
 		/*height: 95px;*/
 		background: 50% transparent url(https://www.dndbeyond.com/Content/Skins/Waterdeep/images/character-sheet/content-frames/ac.svg) no-repeat;
 		background-size: contain;
 		text-align: center;
-		filter: drop-shadow(1px 2px 2px black);
-		flex-grow: 1;
+		color: #838383;
+		font-size: large;
+		line-height: 1;
+	}
+
+	.stat-score-block-data {
+		font-weight: 700;
+		font-size: 130%;
+		letter-spacing: -1px;
+		color: black;
 	}
 
 	.stat-score-block-row {
 		/*width: 100%;*/
-		/*height: 20%;*/
-		display: flex;
+		/*!*height: 20%;*!*/
+		/*display: flex;*/
+		width: 100%;
+		height: 100%;
+		display: grid;
 		justify-content: space-around;
 		/*position: relative;*/
 		grid-row-start: 2;
 		grid-row-end: 3;
+		grid-template-rows: 1fr;
+		grid-template-columns: repeat(6, 1fr);
+		/*flex-grow: 1;*/
 	}
 
 
