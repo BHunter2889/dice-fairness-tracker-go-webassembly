@@ -1,17 +1,23 @@
 <div class="dice-sides-grid">
-	<counter-grid-row vg-for='i := 0; i < data.NumSides; i=i+4' :side-roll-counters='data.Counters[i:i+4]'></counter-grid-row>
+	<side-roll-counter vg-for='_, counter := range data.Counters' :side-number='counter.SideNumber'></side-roll-counter>
 </div>
 
 <style>
 	.dice-sides-grid {
-		height: 80%;
+		/*height: 80%;*/
 		position: absolute;
 		/* max-height: 100%; */
 		/* display: block; */
-		margin: auto;
+		/*margin: auto;*/
 		display: grid;
 		grid-row-start: 1;
 		grid-row-end: 2;
+		grid-template-columns: repeat(4, 25%);
+		grid-template-rows: repeat(5, 20%);
+		grid-auto-flow: row;
+		place-items: center;
+		height: 100%;
+		width: 100%;
 	}
 </style>
 
