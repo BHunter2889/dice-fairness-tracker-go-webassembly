@@ -11,19 +11,19 @@
 			<div class="stat-score-block-data" vg-if='!state.IsMinNumRollsMet' vg-html='fmt.Sprint("Min # Rolls Not Met")'></div>
 		</div>
 		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='"Balance Threshold: "'>
-			<div class="stat-score-block-data" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.BalanceThreshold)'></div>
+			<div class="stat-score-block-data" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprintf("%.2f", state.DieBalanceComputationValues.BalanceThreshold)'></div>
 		</div>
 		<div class="stat-score-block" vg-if='!state.IsMinNumRollsMet' vg-html='"Expected Rolls/Side: "'>
 			<div class="stat-score-block-data" vg-if='!state.IsMinNumRollsMet' vg-html='fmt.Sprint("Min # Rolls Not Met")'></div>
 		</div>
 		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='"Expected Rolls/Side: "'>
-			<div class="stat-score-block-data" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.ExpectedRollsPerSide)'></div>
+			<div class="stat-score-block-data" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprintf("%.2f", state.DieBalanceComputationValues.ExpectedRollsPerSide)'></div>
 		</div>
 		<div class="stat-score-block" vg-if='!state.IsMinNumRollsMet' vg-html='"Sum Squared Error: "'>
 			<div class="stat-score-block-data" vg-if='!state.IsMinNumRollsMet' vg-html='fmt.Sprint("Min # Rolls Not Met")'></div>
 		</div>
 		<div class="stat-score-block" vg-if='state.IsMinNumRollsMet' vg-html='"Sum Squared Error: "'>
-			<div class="stat-score-block-data" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprint(state.DieBalanceComputationValues.SumSquaredError)'></div>
+			<div class="stat-score-block-data" vg-if='state.IsMinNumRollsMet' vg-html='fmt.Sprintf("%.2f", state.DieBalanceComputationValues.SumSquaredError)'></div>
 		</div>
 		<div class="stat-score-block" vg-if='!state.IsMinNumRollsMet' vg-html='"Balanced: "'>
 			<div class="stat-score-block-data" vg-if='!state.IsMinNumRollsMet' vg-html='fmt.Sprint("Min # Rolls Not Met")'></div>

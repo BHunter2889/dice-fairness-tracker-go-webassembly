@@ -118,7 +118,7 @@ func (comp *Root) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css *vugu.VGN
 					if state.IsMinNumRollsMet {
 						n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block-data"}}}
 						parent.AppendChild(n)
-						n.InnerHTML = fmt.Sprint(fmt.Sprint(state.DieBalanceComputationValues.BalanceThreshold))
+						n.InnerHTML = fmt.Sprint(fmt.Sprintf("%.2f", state.DieBalanceComputationValues.BalanceThreshold))
 					}
 					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 					parent.AppendChild(n)
@@ -156,7 +156,7 @@ func (comp *Root) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css *vugu.VGN
 					if state.IsMinNumRollsMet {
 						n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block-data"}}}
 						parent.AppendChild(n)
-						n.InnerHTML = fmt.Sprint(fmt.Sprint(state.DieBalanceComputationValues.ExpectedRollsPerSide))
+						n.InnerHTML = fmt.Sprint(fmt.Sprintf("%.2f", state.DieBalanceComputationValues.ExpectedRollsPerSide))
 					}
 					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 					parent.AppendChild(n)
@@ -194,7 +194,7 @@ func (comp *Root) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css *vugu.VGN
 					if state.IsMinNumRollsMet {
 						n = &vugu.VGNode{Type: vugu.VGNodeType(3), Data: "div", DataAtom: vugu.VGAtom(92931), Namespace: "", Attr: []vugu.VGAttribute{vugu.VGAttribute{Namespace: "", Key: "class", Val: "stat-score-block-data"}}}
 						parent.AppendChild(n)
-						n.InnerHTML = fmt.Sprint(fmt.Sprint(state.DieBalanceComputationValues.SumSquaredError))
+						n.InnerHTML = fmt.Sprint(fmt.Sprintf("%.2f", state.DieBalanceComputationValues.SumSquaredError))
 					}
 					n = &vugu.VGNode{Type: vugu.VGNodeType(1), Data: "\n\t\t", DataAtom: vugu.VGAtom(0), Namespace: "", Attr: []vugu.VGAttribute(nil)}
 					parent.AppendChild(n)
