@@ -90,7 +90,7 @@
 		background-size: cover;
 		position: relative;
 		display: inline-block;
-		background-image: url("assets/icons/minus.svg");
+		background-image: url("static/icons/minus.svg");
 		background-repeat: no-repeat;
 		background-position: center;
 		background-color: transparent;
@@ -118,7 +118,7 @@
 		background-size: cover;
 		position: relative;
 		display: inline-block;
-		background-image: url("assets/icons/plus.svg");
+		background-image: url("static/icons/plus.svg");
 		background-repeat: no-repeat;
 		background-position: center;
 		background-color: transparent;

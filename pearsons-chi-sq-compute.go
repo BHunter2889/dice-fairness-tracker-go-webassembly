@@ -1,6 +1,8 @@
 package main
 
-import "math"
+import (
+	"math"
+)
 
 /**
  For clarity, the base computational `struct`s (per side aka 'option' and the total) will use the explicit 'PearsonsChiSq`
@@ -133,7 +135,7 @@ func NewComputedPCSValues(numberOfSides int) (newCPCSValues *ComputedPearsonsChi
 func (cpcsv *ComputedPearsonsChiSqValues) ComputePChSqValues(
 	currentRollCountTotal int, counts []int) (isBalanced bool, sse float64, balanceThreshold float64){
 	cpcsv.ComputeExpectedRolls(currentRollCountTotal)
-	cpcsv.ComputeBalanceThreshold(currentRollCountTotal)
+	cpcsv.ComputeBalanceThreshold()
 	cpcsv.ComputeSumSquaredErrorIfMinRollCountMet(currentRollCountTotal, counts)
 	isBalanced, sse, balanceThreshold = cpcsv.ComputeIsBalanced()
 	return
@@ -143,7 +145,7 @@ func (cpcsv *ComputedPearsonsChiSqValues) ComputeExpectedRolls(currentRollCountT
 	cpcsv.ExpectedRollsPerSide = float64(currentRollCountTotal) / float64(cpcsv.DieConstants.NumberOfSides)
 }
 
-func (cpcsv *ComputedPearsonsChiSqValues) ComputeBalanceThreshold(currentRollCountTotal int) {
+func (cpcsv *ComputedPearsonsChiSqValues) ComputeBalanceThreshold() {
 	cpcsv.BalanceThreshold = cpcsv.ExpectedRollsPerSide * cpcsv.DieConstants.ChiSqTableValue
 }
 
