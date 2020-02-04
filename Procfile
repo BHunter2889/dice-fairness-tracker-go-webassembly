@@ -1,1 +1,1 @@
-web: cd ./dist | ./server
+web: ./dist/server
