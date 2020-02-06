@@ -16,6 +16,7 @@ import (
 
 func main() {
 	port := os.Getenv("PORT")
+	log.Println(port)
 	if port == "" {
 		port = "127.0.0.1:8877"
 	}
