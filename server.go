@@ -16,9 +16,13 @@ import (
 
 func main() {
 	port := os.Getenv("PORT")
+	if port == "" {
+		port = "127.0.0.1:8877"
+	}
+
 	dev := flag.Bool("dev", false, "Enable development features")
 	dir := flag.String("dir", ".", "Project directory")
-	httpl := flag.String("http", "127.0.0.1:" + port, "Listen for HTTP on this host:port")
+	httpl := flag.String("http", port, "Listen for HTTP on this host:port")
 	flag.Parse()
 	wd, _ := filepath.Abs(*dir)
 	os.Chdir(wd)
