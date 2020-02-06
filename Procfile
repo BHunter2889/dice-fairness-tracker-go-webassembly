@@ -1,1 +1,1 @@
-web: cd dist/ | ./server
+web: cd dist/ && ./server
