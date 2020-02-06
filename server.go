@@ -18,8 +18,9 @@ func main() {
 	port := os.Getenv("PORT")
 	log.Printf("Provided Port: %q", port)
 	if port == "" {
-		port = "127.0.0.1:8877"
+		log.Fatal("$PORT must be set")
 	}
+	port = ":" + port
 
 	dev := flag.Bool("dev", false, "Enable development features")
 	dir := flag.String("dir", ".", "Project directory")
