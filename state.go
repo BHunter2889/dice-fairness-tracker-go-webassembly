@@ -13,8 +13,8 @@ type globalState struct {
 	SideRollCounts              []int
 	SideRollCounters            []SideRollCounterData   // Will need set after initState() is called and numSides is known.
 	CounterGrid                 [][]SideRollCounterData // TODO: Is this needed? Will it help with Styling the counter grid?
-	TotalRollCount              int `default:"0"`
-	IsMinNumRollsMet			bool
+	TotalRollCount              int                     `default:"0"`
+	IsMinNumRollsMet            bool
 	DieBalanceComputationValues *ComputedPearsonsChiSqValues
 }
 

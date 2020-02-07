@@ -20,7 +20,7 @@ func main() {
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
-	port = ":" + port
+	port = ":" + port // ":" is used as the required Heroku format
 
 	dev := flag.Bool("dev", false, "Enable development features")
 	dir := flag.String("dir", ".", "Project directory")
@@ -28,9 +28,15 @@ func main() {
 	flag.Parse()
 	wd, _ := filepath.Abs(*dir)
 	os.Chdir(wd)
+
+	// Set Custom Template / Title
+	simplehttp.DefaultPageTemplateSource = template_string
+	simplehttp.DefaultStaticData["Title"] = title
+
+	// import CSS / fonts
+	simplehttp.DefaultStaticData["CSSFiles"] = []string{cssFonts, cssIndex}
+
 	log.Printf("Starting HTTP Server at %q", *httpl)
 	h := simplehttp.New(wd, *dev)
-	// import CSS / fonts
-	simplehttp.DefaultStaticData["CSSFiles"] = []string{ "static/css/fonts.css", "static/css/index.css" }
 	log.Fatal(http.ListenAndServe(*httpl, h))
 }

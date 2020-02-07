@@ -67,7 +67,7 @@ func (comp *RollCount) BuildVDOM(dataI interface{}) (vdom *vugu.VGNode, css *vug
 	return
 }
 
-type RollCount struct {}
+type RollCount struct{}
 
 func (ct *RollCount) NewData(props vugu.Props) (interface{}, error) { return &RollCountData{}, nil }
 

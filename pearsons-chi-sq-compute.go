@@ -5,10 +5,10 @@ import (
 )
 
 /**
- For clarity, the base computational `struct`s (per side aka 'option' and the total) will use the explicit 'PearsonsChiSq`
- naming convention.
- For simplicity, all `func`s will use the abbreviated `PCS` naming convention.
- */
+For clarity, the base computational `struct`s (per side aka 'option' and the total) will use the explicit 'PearsonsChiSq`
+naming convention.
+For simplicity, all `func`s will use the abbreviated `PCS` naming convention.
+*/
 
 const d20ChiTableLookup = 30.143
 
@@ -19,8 +19,8 @@ type DieConstantsBySides struct {
 }
 
 /**
-	Die Constant struct instances for conventional unconventionally sided die (and a d6 of course).
- */
+Die Constant struct instances for conventional unconventionally sided die (and a d6 of course).
+*/
 var d4, d6, d8, d10, d12, d20 = initDieConstants()
 
 func initDieConstants() (d4, d6, d8, d10, d12, d20 DieConstantsBySides) {
@@ -83,14 +83,14 @@ func GetDieConstantsBySides(numberOfSides int) (d DieConstantsBySides) {
 }
 
 /**
-	Pearson's Chi-Square Test requires the following values for each die side option (`PearsonsChiSqOption`)
-	and for each die as a whole (`ComputedPearsonsChiSqValues`).
- */
+Pearson's Chi-Square Test requires the following values for each die side option (`PearsonsChiSqOption`)
+and for each die as a whole (`ComputedPearsonsChiSqValues`).
+*/
 type PearsonsChiSqOption struct {
-	SideRollCount     int     `default:"0"`    // Should be passed in each time Compute is called, but stored for display.
-	ExpectedRollCount float64 `default:"0.0"`  // Should be passed in each time Compute is called, but stored for display.
-	Error             float64  `default:"0.0"` // `SideRollCount - ExpectedRollCount`
-	SquaredError      float64  `default:"0.0"` // `math.Pow(Error, 2)` aka Error^2
+	SideRollCount     int     `default:"0"`   // Should be passed in each time Compute is called, but stored for display.
+	ExpectedRollCount float64 `default:"0.0"` // Should be passed in each time Compute is called, but stored for display.
+	Error             float64 `default:"0.0"` // `SideRollCount - ExpectedRollCount`
+	SquaredError      float64 `default:"0.0"` // `math.Pow(Error, 2)` aka Error^2
 }
 
 type ComputedPearsonsChiSqValues struct {
@@ -103,8 +103,8 @@ type ComputedPearsonsChiSqValues struct {
 }
 
 /**
-	Methods for computing the associated Chi-Square values for each Side Option
- */
+Methods for computing the associated Chi-Square values for each Side Option
+*/
 
 func (option *PearsonsChiSqOption) ComputeErrorAndSquaredError(
 	currentSideRollCount int, expectedRollCount float64) (pcsqError float64, squaredError float64) {
@@ -118,8 +118,8 @@ func (option *PearsonsChiSqOption) ComputeErrorAndSquaredError(
 }
 
 /**
-	Methods for Computing the Pearson's Chi-Square analysis
- */
+Methods for Computing the Pearson's Chi-Square analysis
+*/
 
 func NewComputedPCSValues(numberOfSides int) (newCPCSValues *ComputedPearsonsChiSqValues) {
 	newCPCSValues = &ComputedPearsonsChiSqValues{}
@@ -133,7 +133,7 @@ func NewComputedPCSValues(numberOfSides int) (newCPCSValues *ComputedPearsonsChi
 
 // Groups and calls all necessary compute functions.
 func (cpcsv *ComputedPearsonsChiSqValues) ComputePChSqValues(
-	currentRollCountTotal int, counts []int) (isBalanced bool, sse float64, balanceThreshold float64){
+	currentRollCountTotal int, counts []int) (isBalanced bool, sse float64, balanceThreshold float64) {
 	cpcsv.ComputeExpectedRolls(currentRollCountTotal)
 	cpcsv.ComputeBalanceThreshold()
 	cpcsv.ComputeSumSquaredErrorIfMinRollCountMet(currentRollCountTotal, counts)

@@ -17,8 +17,8 @@ func main() {
 	state.initGrid(20)
 
 	/**
-		Tried the below but apparently it is non-reactive. Instead using state directly in root.vugu
-	 */
+	Tried the below but apparently it is non-reactive. Instead using state directly in root.vugu
+	*/
 	//var rd RootData
 	//rootDataMeta := reflect.TypeOf(rd)
 	//rootDataLen := rootDataMeta.NumField()
@@ -53,7 +53,3 @@ func main() {
 	}
 
 }
-
-
-
-
