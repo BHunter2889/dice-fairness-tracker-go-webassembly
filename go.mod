@@ -4,5 +4,5 @@ go 1.13
 
 require (
 	github.com/vugu/vugu v0.1.0
-	golang.org/x/net v0.0.0-20200202094626-16171245cfb2 // indirect
+	golang.org/x/net v0.7.0 // indirect
 )
